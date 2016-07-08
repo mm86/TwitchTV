@@ -4,6 +4,17 @@ h2 {
 
 }
 
+#buttonFilters {
+
+	text-align: center;
+
+}
+
+button {
+
+	font-size: 16px;
+}
+
 #channels img {
 
 	height: 50px;
