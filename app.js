@@ -9,14 +9,19 @@ $(function() {
         $.getJSON('https://api.twitch.tv/kraken/streams/'+channels[i]+'?callback=?', function(data) {
             if (data.stream === null) {             
                 $.getJSON(data._links.channel+'?callback=?', function(data) {
-                  console.log(data.logo);
-                  $('#channels ul').append('<li><img src="'+data.logo+'"/><p><a href="'+data.url+'">'+data.display_name+'</a></p><p>Offline</p>');
+                  if(data.logo===null)
+                  {
+                    data.logo = "http://img.bhs4.com/2a/0/2a05500a3a3ef626426fbca6efb69017863992af_large.jpg";
+                  }
+                  $('#channels ul').append('<li><img src="'+data.logo+'"/><span><a href="'+data.url+'">'+data.display_name+'</a></span><span>Offline</span>');
                 });
             } else if (data.status === 422) {
-                $("#channels ul").append('<li>'+channels[i]+', account closed</li>'); 
+
+                $("#channels ul").append('<li><img src="http://img.bhs4.com/2a/0/2a05500a3a3ef626426fbca6efb69017863992af_large.jpg"/><span>'+channels[i]+', account closed</span></li>'); 
           
             } else {
-                $('#channels ul').append('<li><img src='+data.stream.channel.logo+'/><p><a href="'+data.stream.channel.url+'">'+data.stream.channel.display_name+'</a></p><p>'+data.stream.channel.status+'</p>');
+
+                $('#channels ul').append('<li><img src="'+data.stream.channel.logo+'"/><span><a href="'+data.stream.channel.url+'">'+data.stream.channel.display_name+'</a></span><span>'+data.stream.channel.status+'</span>');
 
             }
 
