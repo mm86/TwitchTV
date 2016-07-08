@@ -9,3 +9,19 @@ h2 {
 	height: 50px;
 	width: 50px;
 }
+
+#channels ul {
+
+    padding: 0 10%;
+	list-style-type: none;
+}
+
+#channels li span {
+
+	padding: 0 0 0 20px;
+}
+
+#channels li {
+	padding: 20px;
+	background: #e6f3ff;
+}
